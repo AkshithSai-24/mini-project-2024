@@ -20,12 +20,7 @@ def predict():
     #model = pickle.load(open("model.pkl","rb"))
     b = request.form.to_dict()
     print(b)
-    b = pd.DataFrame(b,index=[0])
-
-    #a = [float(x) for x in request.form.values()]
-
-    trans = pickle.load(open("data_x.pkl","rb"))
-    b = trans.transform(b)
+    
     model = pickle.load(open("model.pkl","rb")) 
     p = model.predict(b)
     return render_template('p.html',p_text = f"Prediction = {p[0]}  ")
